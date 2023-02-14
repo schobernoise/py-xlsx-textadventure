@@ -16,9 +16,10 @@ class MapTile:
 
 class MapBuilder:
     def __init__(self, excel_map) -> None:
+        self.boundaries = (0, 0)
         self.excel_map = excel_map
         self.world_map = self.xlsx_reader(self.excel_map)
-        self.boundaries = (0, 0)
+        
         self.return_map()
 
     def xlsx_reader(self, excel_file):

@@ -36,15 +36,27 @@ class Player:
     ############################
 
     def move(self, direction):
+        print("BOUNDARIES", self.__boundaries)
         if direction == "north" and self.get_coordinates()[0] > 0:
-            self.set_coordinates(self.get_coordinates()[0] - 1)
+            self.set_coordinates(
+                (self.get_coordinates()[0] - 1, self.get_coordinates()[1])
+            )
         elif direction == "south" and self.get_coordinates()[0] < self.__boundaries[0]:
-            self.set_coordinates(self.get_coordinates()[0] + 1)
+            self.set_coordinates(
+                (self.get_coordinates()[0] + 1, self.get_coordinates()[1])
+            )
             # print("You are going", direction)
-        elif direction == "east" and self.get_coordinates()[1] > 0:
-            self.set_coordinates(self.get_coordinates()[1] - 1)
-        elif direction == "west" and self.get_coordinates()[1] < self.__boundaries[1]:
-            self.set_coordinates(self.get_coordinates()[1] + 1)
+        elif direction == "east" and self.get_coordinates()[1] < self.__boundaries[1]:
+            self.set_coordinates(
+                (self.get_coordinates()[0], self.get_coordinates()[1] + 1)
+            )
+        elif direction == "west" and self.get_coordinates()[1] > 0:
+            self.set_coordinates(
+                (self.get_coordinates()[0], self.get_coordinates()[1] - 1)
+            )
         else:
             print_to_console("I can't go there")
         print_to_console(self.get_coordinates())
+
+    def observe(self):
+        print_to_console("You are observing your surroundings.")
