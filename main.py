@@ -2,6 +2,8 @@ from map import MapBuilder
 from player import Player
 from console import *
 
+##### GLOBAL VARIABLES ########
+
 MAP_FILE = "./text_map.xlsx"
 WORLD_MAP = MapBuilder(MAP_FILE)
 BOUNDARIES = WORLD_MAP.get_boundaries()
@@ -13,7 +15,7 @@ COMMANDS = {"help": print_help, "move": PLAYER.move, "observe": PLAYER.observe}
 def init_game():
     player_name = input(f"What is your name? ")
     PLAYER.set_name(player_name)
-    print("Hello ", PLAYER.get_name())
+    print("Hello " + PLAYER.get_name())
 
 
 if __name__ == "__main__":

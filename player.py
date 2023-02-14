@@ -3,11 +3,12 @@ from console import *
 
 class Player:
     def __init__(self, hp, mana, boundaries, name="", coordinates=(0, 0)):
-        self.__name = name
-        self.__coordinates = coordinates
-        self.__hp = hp
-        self.__mana = mana
+        self.set_name(name)
+        self.set_coordinates(coordinates)
+        self.set_hp(hp)
+        self.set_mana(mana)
         self.__boundaries = boundaries
+        self.inventory = []
 
     def get_name(self):
         return self.__name
@@ -60,3 +61,13 @@ class Player:
 
     def observe(self):
         print_to_console("You are observing your surroundings.")
+        print_to_console("You see ...") # TODO: Here it would be possible to fetch data from the current tile, displaying descriptive information.
+    
+    def get_inventory(self):
+        raise NotImplementedError
+    
+    def add_to_inventory(self, items):
+        raise NotImplementedError
+    
+    def del_from_inventory(self,items):
+        raise NotImplementedError

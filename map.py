@@ -1,3 +1,4 @@
+import utils
 import openpyxl
 
 
@@ -17,12 +18,12 @@ class MapTile:
 class MapBuilder:
     def __init__(self, excel_map) -> None:
         self.boundaries = (0, 0)
-        self.excel_map = excel_map
-        self.world_map = self.xlsx_reader(self.excel_map)
-        
+        self.world_map = self.map_from_xlsx(excel_map)
+
         self.return_map()
 
-    def xlsx_reader(self, excel_file):
+    def map_from_xlsx(self, excel_file):
+        # TODO implement utils.get_workbook fn
         wb = openpyxl.load_workbook(excel_file)
         sheet = wb.active
         world_map = []
